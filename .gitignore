@@ -157,3 +157,5 @@ vtkdatawidgets/nbextension/static/*.worker.js.map
 
 # Packed lab extensions
 vtkdatawidgets/labextension
+.project
+.pydevproject

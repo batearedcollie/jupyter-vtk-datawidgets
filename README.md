@@ -1,11 +1,32 @@
 
 # jupyter-vtk-datawidgets
 
-[![Build Status](https://travis-ci.org/vidartf/vtkdatawidgets.svg?branch=master)](https://travis-ci.org/vidartf/vtkdatawidgets)
-[![codecov](https://codecov.io/gh/vidartf/vtkdatawidgets/branch/master/graph/badge.svg)](https://codecov.io/gh/vidartf/vtkdatawidgets)
+Fork from 
+
+https://github.com/vidartf/jupyter-vtk-datawidgets
+
+For purpose of testign Jupyter lab build
 
 
-Jupyter data-widget based on VTK sources
+## Docker build
+
+```bash 
+docker build . -t jupyter-vtk-datawidgets:0
+```
+
+## Docker run
+
+Deefult command is to run Jupyter lab
+```bash 
+docker run -p 8888:8888 -it jupyter-vtk-datawidgets:0
+```
+
+Or run notebook server using 
+```bash 
+docker run -p 8888:8888 -it jupyter-vtk-datawidgets:0 jupyter notebook --ip=0.0.0.0 --allow-root
+```
+
+Connect to the server on https://localhost:8888
 
 ## Installation
 
@@ -34,3 +55,5 @@ jupyter labextension install @jupyter-widgets/jupyterlab-manager
 ```
 
 , as appropriate.
+
+

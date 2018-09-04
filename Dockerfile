@@ -25,7 +25,7 @@ RUN python3 -m pip install --upgrade pip && \
 # Environment - make sure we pick up python and vtk
 #
 #  NOTE - at time of writing i cannot get it to self determine
-#   	python 3.6
+#   	the python verison
 #
 ####################################################################
 ENV PYTHONPATH "${PYTHONPATH}:/usr/local/lib/python3.6/site-packages/"
@@ -42,19 +42,23 @@ RUN jupyter labextension install @jupyter-widgets/jupyterlab-manager
 ####################################################################
 ADD . /jupyter-vtk-datawidgets
 RUN cd /jupyter-vtk-datawidgets && \
+	npm install webpack-node-externals --save-dev && \
 	python3 -m pip install -e . -v 
 
 # Notebook plugin build - this currently works
-RUN jupyter nbextension install --system --py vtkdatawidgets && \
-	jupyter nbextension enable --system --py vtkdatawidgets
+#RUN cd /jupyter-vtk-datawidgets && \
+#	jupyter nbextension install --system --py vtkdatawidgets && \
+#	jupyter nbextension enable --system --py vtkdatawidgets
 	
 # Lab extension - this does not work
-#RUN jupyter labextension install .
+RUN cd /jupyter-vtk-datawidgets && \
+	jupyter labextension install .
 
 ####################################################################
 # Set default shell to bash
 ####################################################################
 ENV SHELL /bin/bash
+RUN mkdir /host
 
 ####################################################################
 # Default command starting jupyter lab 

@@ -9,7 +9,8 @@ const dist_path = path.resolve(__dirname, 'dist');
 const version = require('./package.json').version;
 
 // Packages that shouldn't be bundled but loaded at runtime
-const externals = ['@jupyter-widgets/base','vtk','vtk.js','vtkjs'];
+//const externals = ['@jupyter-widgets/base','vtk','vtk.js','vtkjs'];
+const externals = ['@jupyter-widgets/base','vtk.js','vtkjs'];
 
 // Custom webpack rules are generally the same for all webpack bundles, hence
 // stored in a separate local variable.
@@ -57,9 +58,7 @@ const lab = {
     module: {
         rules
     },
-    externals: [nodeExternals(
-                            //{whitelist: externals}
-                            )],
+    externals: [nodeExternals({whitelist: ['vtk']})],
     resolve,
 };
 
